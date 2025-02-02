@@ -45,16 +45,13 @@ spec:
 
     ports:
       web:
-        containerPort: 80
         redirections:
           entrypoint:
             to: websecure
             priority: 10
       websecure:
-        containerPort: 443
         http3:
           enabled: true
-          advertisedPort: 4443
         tls:
           enabled: true
       
