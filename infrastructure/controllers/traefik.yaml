@@ -35,19 +35,9 @@ spec:
     globalArguments:
       - "--global.sendanonymoususage=false"
       - "--global.checknewversion=false"
-
     additionalArguments:
       - "--serversTransport.insecureSkipVerify=true"
       - "--log.level=INFO"
-
-    deployment:
-      enabled: true
-      replicas: 3
-      annotations: {}
-      podAnnotations: {}
-      additionalContainers: []
-      initContainers: []
-
     ports:
       web:
         redirections:
@@ -57,7 +47,7 @@ spec:
       websecure:
         http3:
           enabled: true
-          advertisedPort: 443
+          advertisedPort: 4443
         tls:
           enabled: true
       
@@ -75,16 +65,14 @@ spec:
           allowExternalNameServices: true
           publishedService:
             enabled: false
-
       rbac:
         enabled: true
-
       service:
         enabled: true
         type: LoadBalancer
         annotations: {}
         labels: {}
         spec:
-          loadBalancerIP: 10.20.23.63
+          loadBalancerIP: 10.20.23.60
         loadBalancerSourceRanges: []
         externalIPs: []
