@@ -2,7 +2,7 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: traefik-svc-misaki-ebadfd-tech
+  name: traefik-svc-misaki-ebadfd-tech-tls
   namespace: traefik
 spec:
   secretName: traefik-svc-misaki-ebadfd-tech-tls
@@ -30,4 +30,4 @@ spec:
         - name: api@internal
           kind: TraefikService
   tls:
-    secretName: traefik-svc-misaki-ebadfd-tech
+    secretName: traefik-svc-misaki-ebadfd-tech-tls
