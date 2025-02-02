@@ -9,6 +9,8 @@ spec:
     email: fluxcdbot@users.noreply.github.com
     # The server is replaced in /clusters/production/infrastructure.yaml
     server: https://acme-staging-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: letsencrypt-production
     solvers:
       - dns01:
           cloudflare:
