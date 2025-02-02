@@ -1,0 +1,40 @@
+apiVersion: v1
+data:
+    cloudflare-token-secret: ENC[AES256_GCM,data:tnpP4A77kGpmtDXbm92MBJcRzfSeRnJE4EecULw0S0G4HpyRUwXB1T+E8Y8A7er8YY/jRZUNB9Y=,iv:0EO0KnMcnacDVuQIojs0g5Mh2+oPbjwfscpHvNyvg8I=,tag:UoF39Oi1hntunt6/suDpng==,type:str]
+kind: Secret
+metadata:
+    creationTimestamp: null
+    name: cloudflare-token
+    namespace: cert-manager
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2025-02-02T10:38:24Z"
+    mac: ENC[AES256_GCM,data:tpArLRPOz2WnYE2vrdtO45prN68cgicg38+ogBvzQHMDevq79MH2KoJagbcLWJIy1IPdtzz84iCEO42NDJpKy0w0Su39YNnnPMf9IzVa+tF2rw66OlWbvQGUunzRjIK2qsaeuqM415s4PmVa7h9xhxAvxaortLZqEfRmQ0s8IBU=,iv:HKV82Prt/AUgNpwpRHn3/nWacjEguuIXwQ69m/r/xlY=,tag:ZkCMqECJdDvHb1XONO4bOg==,type:str]
+    pgp:
+        - created_at: "2025-02-02T10:38:24Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA+gCzKTO2+xZARAAoS8R3hxATgDBtN82XOBaW3Bi9R5b8S5ephJAZ/vj5S4A
+            V0mkgy4X39FzYSpvjsgjmEyTu8Z6/DXD9lzPEd7aRfn2EoHCwHeaEV89me4Cjwlb
+            AzlPbZ9Q68RLTObPH0MDAxtv958Yz/w/+UeKSfCg8PTVNSM9BPpNp4vAtHYNcoUH
+            pd9VfJm1lc+rXIi5H9HkUJZBJOjuSNKyDRti/Rz1oMEUqFrIu6iD/OzU8JDoLsDE
+            nsDi/Hfm0GlD//UoG1FttMJPySx9wIc2bd8uC/ehXj0xW4Qk8kuZQtk+r2hkvmD1
+            p+zfLxRdRoN79Hul/53bWDIHIuk8THVAFSe00GAf10XPyIp+aYmrDRDsqBAdjN8i
+            zM5C8s2NMFa4HFz9Fra3ydLBTm+FQ1mTNYW8z3JHc7tuWP+R36JpA6e+BUaq8g8n
+            gf9Y4y5C3Kuxv9NPlp1bLm+1C8LOnXSkWHl0l/2zM9obbRtBvDeSpUq8YOXrjcq2
+            DCHE12RNWWn30F0hSx1MxlDRfX8au/XvA154yEvt5dHFpsMWw9b33Rqhvbm9hCom
+            kCvOtdU2ixkX7DbhoeClvuospEdgv6CY3vijgTNDwS8qqJenwGtGhqTgn85lfnlG
+            /SdSmBBcWLWzOFDy0OsCMtU3g2P3v/XithDT2PjuLuXiUjc7p4wLD6TIBCAnX6vU
+            aAEJAhBqlulXNTqZ10zkFrPo5RnF2jpK0QGj4NrcRA7JNsnSFO0u++ztsHGoGaCe
+            nu3ZLVvo3uhdhD+LBS/RIlIo65WXcGVa2Lfm2HCNATqU7BToSvFK0FmbNpvq/vb0
+            PJt/nkH/j/lz
+            =V5js
+            -----END PGP MESSAGE-----
+          fp: DAA140F46700C64F0BD4D5467D3456EC00A661A0
+    encrypted_regex: ^(data|stringData)$
+    version: 3.9.2
