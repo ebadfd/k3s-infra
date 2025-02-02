@@ -9,7 +9,7 @@ spec:
   issuerRef:
     name: letsencrypt
     kind: ClusterIssuer
-  commonName: "*.svc.misaki.ebadfd.tech.yaml"
+  commonName: "*.svc.misaki.ebadfd.tech"
   dnsNames:
-  - "svc.misaki.ebadfd.tech.yaml"
-  - "*.svc.misaki.ebadfd.tech.yaml"
+  - "svc.misaki.ebadfd.tech"
+  - "*.svc.misaki.ebadfd.tech"
