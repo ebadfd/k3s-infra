@@ -50,8 +50,8 @@ spec:
                 cloudflare:
                   email: ebadfd@proton.me
                   apiTokenSecretRef:
-                    name: cloudflare-token-secret
-                    key: cloudflare-token
+                    name: cloudflare-token
+                    key: cloudflare-token-secret
               selector:
                 dnsZones:
                   - "ebadfd.tech"
