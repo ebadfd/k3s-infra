@@ -53,28 +53,28 @@ spec:
         tls:
           enabled: true
       
-      ingressRoute:
-        dashboard:
-          enabled: false
+    ingressRoute:
+      dashboard:
+        enabled: false
 
-      providers:
-        kubernetesCRD:
-          enabled: true
-          ingressClass: traefik-external
-          allowExternalNameServices: true
-        kubernetesIngress:
-          enabled: true
-          allowExternalNameServices: true
-          publishedService:
-            enabled: false
-      rbac:
+    providers:
+      kubernetesCRD:
         enabled: true
-      service:
+        ingressClass: traefik-external
+        allowExternalNameServices: true
+      kubernetesIngress:
         enabled: true
-        type: LoadBalancer
-        annotations: {}
-        labels: {}
-        spec:
-          loadBalancerIP: 10.20.23.60
-        loadBalancerSourceRanges: []
-        externalIPs: []
+        allowExternalNameServices: true
+        publishedService:
+          enabled: false
+    rbac:
+      enabled: true
+    service:
+      enabled: true
+      type: LoadBalancer
+      annotations: {}
+      labels: {}
+      spec:
+        loadBalancerIP: 10.20.23.60
+      loadBalancerSourceRanges: []
+      externalIPs: []
