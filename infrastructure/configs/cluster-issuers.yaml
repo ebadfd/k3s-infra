@@ -12,6 +12,12 @@ spec:
     privateKeySecretRef:
       name: letsencrypt-nginx
     solvers:
-      - http01:
-          ingress:
-            class: nginx
+      - dns01:
+          cloudflare:
+            email: you@example.com
+            apiTokenSecretRef:
+              name: cloudflare-token-secret
+              key: cloudflare-token
+        selector:
+          dnsZones:
+            - "example.com"
