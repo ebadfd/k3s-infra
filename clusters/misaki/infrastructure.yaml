@@ -42,8 +42,6 @@ spec:
         - op: replace
           path: /spec/acme/solvers
           value: 
-            selector:
-              dnsZones:
             solvers:
               - dns01:
                   cloudflare:
