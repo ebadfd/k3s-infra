@@ -1,0 +1,90 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: traefik
+  labels:
+    toolkit.fluxcd.io/tenant: sre-team
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: traefik
+  namespace: traefik
+spec:
+  interval: 24h
+  url: https://traefik.github.io/charts
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: traefik
+  namespace: traefik
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: traefik
+      version: "v34.2.0"
+      sourceRef:
+        kind: HelmRepository
+        name: traefik
+        namespace: traefik
+      interval: 12h
+  values:
+    globalArguments:
+      - "--global.sendanonymoususage=false"
+      - "--global.checknewversion=false"
+
+    additionalArguments:
+      - "--serversTransport.insecureSkipVerify=true"
+      - "--log.level=INFO"
+
+    deployment:
+      enabled: true
+      replicas: 3
+      annotations: {}
+      podAnnotations: {}
+      additionalContainers: []
+      initContainers: []
+
+    ports:
+      web:
+        redirections:
+          entrypoint:
+            to: websecure
+            priority: 10
+      websecure:
+        http3:
+          enabled: true
+          advertisedPort: 443
+        tls:
+          enabled: true
+      
+      ingressRoute:
+        dashboard:
+          enabled: false
+
+      providers:
+        kubernetesCRD:
+          enabled: true
+          ingressClass: traefik-external
+          allowExternalNameServices: true
+        kubernetesIngress:
+          enabled: true
+          allowExternalNameServices: true
+          publishedService:
+            enabled: false
+
+      rbac:
+        enabled: true
+
+      service:
+        enabled: true
+        type: LoadBalancer
+        annotations: {}
+        labels: {}
+        spec:
+          loadBalancerIP: 10.20.23.63
+        loadBalancerSourceRanges: []
+        externalIPs: []
