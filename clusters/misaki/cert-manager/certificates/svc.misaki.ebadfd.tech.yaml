@@ -1,0 +1,15 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: svc-misaki-ebadfd-tech
+  namespace: cert-manager
+spec:
+  secretName: svc-misaki-ebadfd-tech-tls
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  commonName: "*.svc.misaki.ebadfd.tech.yaml"
+  dnsNames:
+  - "svc.misaki.ebadfd.tech.yaml"
+  - "*.svc.misaki.ebadfd.tech.yaml"

@@ -35,10 +35,14 @@ spec:
     - patch: |
         - op: replace
           path: /spec/acme/server
-          value: https://acme-staging-v02.api.letsencrypt.org/directory
+          value: https://acme-v02.api.letsencrypt.org/directory
         - op: replace
           path: /spec/acme/email
           value: dasith@ebadfd.tech
+        - op: replace
+          path: /spec/acme/privateKeySecretRef
+          value:
+              name: letsencrypt-production
         - op: replace
           path: /spec/acme/solvers
           value: 
@@ -51,7 +55,6 @@ spec:
               selector:
                 dnsZones:
                   - "ebadfd.tech"
-      # value: https://acme-v02.api.letsencrypt.org/directory
       target:
         kind: ClusterIssuer
         name: letsencrypt
