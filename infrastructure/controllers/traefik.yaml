@@ -38,6 +38,11 @@ spec:
     additionalArguments:
       - "--serversTransport.insecureSkipVerify=true"
       - "--log.level=INFO"
+
+    deployment:
+      enabled: true
+      replicas: 3
+
     ports:
       web:
         containerPort: 80
