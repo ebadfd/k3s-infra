@@ -1,3 +1,18 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: traefik-svc-misaki-ebadfd-tech
+  namespace: traefik
+spec:
+  secretName: traefik-svc-misaki-ebadfd-tech-tls
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+  commonName: "traefik.svc.misaki.ebadfd.tech"
+  dnsNames:
+  - "traefik.svc.misaki.ebadfd.tech"
+---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
@@ -14,3 +29,5 @@ spec:
       services:
         - name: api@internal
           kind: TraefikService
+  tls:
+    secretName: traefik-svc-misaki-ebadfd-tech
