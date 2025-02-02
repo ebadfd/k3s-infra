@@ -38,13 +38,13 @@ spec:
           value: https://acme-staging-v02.api.letsencrypt.org/directory
         - op: replace
           path: /spec/acme/email
-          value: you@example.com
+          value: dasith@ebadfd.tech
         - op: replace
           path: /spec/acme/solvers
           value: 
             - dns01:
                 cloudflare:
-                  email: you@example.com
+                  email: ebadfd@proton.me
                   apiTokenSecretRef:
                     name: cloudflare-token-secret
                     key: cloudflare-token
