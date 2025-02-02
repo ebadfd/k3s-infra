@@ -42,16 +42,15 @@ spec:
         - op: replace
           path: /spec/acme/solvers
           value: 
-            solvers:
-              - dns01:
-                  cloudflare:
-                    email: you@example.com
-                    apiTokenSecretRef:
-                      name: cloudflare-token-secret
-                      key: cloudflare-token
-                selector:
-                  dnsZones:
-                    - "ebadfd.tech"
+            - dns01:
+                cloudflare:
+                  email: you@example.com
+                  apiTokenSecretRef:
+                    name: cloudflare-token-secret
+                    key: cloudflare-token
+              selector:
+                dnsZones:
+                  - "ebadfd.tech"
       # value: https://acme-v02.api.letsencrypt.org/directory
       target:
         kind: ClusterIssuer
