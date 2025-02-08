@@ -12,5 +12,6 @@ spec:
     kind: GitRepository
     name: flux-system
   path: ./apps/production
+  prune: true
   wait: true
   timeout: 5m0s
