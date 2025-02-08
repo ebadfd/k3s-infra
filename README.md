@@ -1,5 +1,17 @@
 # k3s infra
 
+bootstrap cluster
+
+```sh
+flux bootstrap github \
+  --token-auth \
+  --owner=ebadfd \
+  --repository=k3s-infra  \
+  --branch=main \
+  --path=clusters/misaki \
+  --personal
+```
+
 import the public key for secret encryption. 
 
 ```sh
