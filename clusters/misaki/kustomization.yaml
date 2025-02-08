@@ -7,7 +7,3 @@ resources:
   - ./apps.yaml
   - ./cert-manager
   - ./traefik
-patches:
-  - path: ./nginx-values.yaml
-    target:
-      kind: Deployment
