@@ -3,3 +3,5 @@ kind: Kustomization
 resources:
     - ./cloudflare-token.yaml
     - ./certificates/svc.misaki.ebadfd.tech.yaml
+dependsOn:
+    - name: infra-controllers
