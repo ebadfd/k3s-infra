@@ -72,7 +72,7 @@ spec:
     rbac:
       enabled: true
     service:
-      enabled: true
+      enabled: false
       type: LoadBalancer
       annotations: {}
       labels: {}
