@@ -72,11 +72,11 @@ spec:
     rbac:
       enabled: true
     service:
-      enabled: false
+      enabled: true
       type: LoadBalancer
       annotations: {}
       labels: {}
       spec:
-        loadBalancerIP: 10.20.23.60
+        loadBalancerIP: 10.20.23.61
       loadBalancerSourceRanges: []
       externalIPs: []
