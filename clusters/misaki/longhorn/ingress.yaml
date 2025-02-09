@@ -1,0 +1,33 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: longhorn-svc-misaki-ebadfd-tech-tls
+  namespace: longhorn-system
+spec:
+  secretName: longhorn-svc-misaki-ebadfd-tech-tls
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+  commonName: "longhorn.svc.misaki.ebadfd.tech"
+  dnsNames:
+  - "longhorn.svc.misaki.ebadfd.tech"
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: longhorn-dashboard
+  namespace: longhorn-system
+  annotations: 
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`longhorn.svc.misaki.ebadfd.tech`)
+      kind: Rule
+      services:
+        - name: longhorn-frontend
+          kind: Service
+  tls:
+    secretName: longhorn-svc-misaki-ebadfd-tech-tls
