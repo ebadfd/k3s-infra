@@ -28,6 +28,7 @@ spec:
       kind: Rule
       services:
         - name: longhorn-frontend
-          kind: Service
+          port:
+            number: 80
   tls:
     secretName: longhorn-svc-misaki-ebadfd-tech-tls
