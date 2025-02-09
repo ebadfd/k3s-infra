@@ -3,6 +3,6 @@ kind: Kustomization
 resources:
   - ../base/nginx
 patches:
-  - path: ./nginx-values.yaml
+  - path: nginx-values.yaml
     target:
       kind: Deployment
