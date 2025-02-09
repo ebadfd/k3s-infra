@@ -22,6 +22,10 @@ spec:
     - name: infra-configs
   interval: 5m
   path: "./clusters/misaki/cert-manager"
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-key
   sourceRef:
     kind: GitRepository
     name: flux-system
