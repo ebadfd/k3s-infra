@@ -29,7 +29,6 @@ spec:
       services:
         - name: longhorn-frontend
           kind: Service
-          port: 80
-          scheme: https
+          port: 8000
   tls:
     secretName: longhorn-svc-misaki-ebadfd-tech-tls
