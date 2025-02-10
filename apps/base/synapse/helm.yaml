@@ -53,6 +53,7 @@ spec:
         enabled: true
       media_repository:
         enabled: true
+        replicaCount: 1
       wellknown: 
         enabled: false
 
