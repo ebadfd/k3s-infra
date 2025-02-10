@@ -10,10 +10,6 @@ spec:
     kind: GitRepository
     name: flux-system
   path: ./apps/production
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-key
   prune: true
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
@@ -70,3 +66,23 @@ spec:
   prune: true
   wait: true
   timeout: 5m0s
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: synapse
+  namespace: flux-system
+spec:
+  interval: 5m0s
+  dependsOn:
+    - name: apps
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: "./clusters/misaki/synapse"
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-key
+  prune: true
+---
