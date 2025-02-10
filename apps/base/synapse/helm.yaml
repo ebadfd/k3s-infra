@@ -16,7 +16,7 @@ spec:
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: synapse-release
+  name: synapse
   namespace: matrix
 spec:
   chart:
@@ -60,6 +60,8 @@ spec:
       enabled: true
       annotations: {}
       storageClass: longhorn
+      existingClaim: 
+      hostPath:
       accessMode: ReadWriteMany
       size: 10Gi
 
