@@ -42,7 +42,28 @@ spec:
       existingSecret: postgres-secrets
       existingSecretPasswordKey: postgres-password
 
+    workers:
+      default:
+        replicaCount: 2
+      generic_worker: 
+        enabled: true
+      pusher:
+        enabled: true
+      appservice:
+        enabled: true
+      media_repository:
+        enabled: true
+      wellknown: 
+        enabled: true
+
     ingress:
       enabled: false
+
+    redis:
+      enabled: true
+      auth:
+        enabled: true
+        existingSecret: redis-secrets
+        existingSecretPasswordKey: redis-password
 
   interval: 1m0s
