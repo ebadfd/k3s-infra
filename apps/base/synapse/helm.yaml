@@ -54,7 +54,7 @@ spec:
       media_repository:
         enabled: true
       wellknown: 
-        enabled: true
+        enabled: false
 
     ingress:
       enabled: false
