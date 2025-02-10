@@ -56,6 +56,13 @@ spec:
       wellknown: 
         enabled: false
 
+    persistence:
+      enabled: true
+      annotations: {}
+      storageClass: longhorn
+      accessMode: ReadWriteMany
+      size: 10Gi
+
     ingress:
       enabled: false
 
