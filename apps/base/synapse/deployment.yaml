@@ -15,10 +15,6 @@ spec:
     spec:
       hostname: "matrix"
       restartPolicy: "Always"
-      volumes:
-        - name: synapse-data
-          persistentVolumeClaim:
-            claimName: synapse-pvc
       securityContext:
         runAsUser: 991
         runAsGroup: 991
