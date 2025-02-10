@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
   name: synapse
   namespace: matrix
+  labels:
+    app: synapse
 spec:
   replicas: 1
   selector:
@@ -25,8 +27,8 @@ spec:
           image: matrixdotorg/synapse:latest
           securityContext:
             readOnlyRootFilesystem: true
-          port:
-            containerPort: 8008
+          ports:
+            - containerPort: 8008
           volumeMounts:
             - name: synapse-data
               mountPath: /data
