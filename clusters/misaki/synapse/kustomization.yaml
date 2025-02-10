@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - ./pgsql.yaml
   - ./redis.yaml
+  - ./ingress.yaml

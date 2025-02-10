@@ -64,11 +64,7 @@ spec:
       size: 12Gi
 
     ingress:
-      enabled: true
-      annotations: 
-        kubernetes.io/ingress.class: traefik-external
-      traefikPaths: true
-      includeServerName: true
+      enabled: false
 
     redis:
       enabled: true
