@@ -52,8 +52,7 @@ spec:
       appservice:
         enabled: true
       media_repository:
-        enabled: true
-        replicaCount: 1
+        enabled: false
       wellknown: 
         enabled: false
 
