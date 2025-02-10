@@ -24,7 +24,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`im.ebadfd.tech)
+    - match: Host(`im.ebadfd.tech`)
       kind: Rule
       services:
         - name: synapse-matrix-synapse
