@@ -68,6 +68,7 @@ spec:
       annotations: 
         kubernetes.io/ingress.class: traefik-external
       traefikPaths: true
+      includeServerName: true
 
     redis:
       enabled: true
