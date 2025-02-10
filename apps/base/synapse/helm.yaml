@@ -1,0 +1,48 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: matrix
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: matrix-synapse
+  namespace: matrix
+spec:
+  interval: 1m0s
+  url: https://helm.ebadfd.tech
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: synapse
+  namespace: matrix
+spec:
+  chart:
+    spec:
+      chart: longhorn
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: matrix-synapse
+      version: v1.0.0
+  values:
+    serverName: "im.ebadfd.tech"
+    publicServerName: "im.ebadfd.tech"
+    config:
+      reportStats: false
+    
+    postgresql:
+      enabled: false
+
+    externalPostgresql:
+      username: synapseadm
+      host: 10.20.23.40
+      existingSecret: postgres-secrets
+      existingSecretPasswordKey: postgres-password
+
+    ingress:
+      enabled: false
+
+  interval: 1m0s
