@@ -21,7 +21,7 @@ metadata:
 spec:
   chart:
     spec:
-      chart: longhorn
+      chart: matrix-synapse
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
