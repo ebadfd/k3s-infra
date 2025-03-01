@@ -31,6 +31,8 @@ spec:
     config:
       mountPath: /app/config/
       data:
+        server:
+          base-url: homepage.ebadfd.tech
         theme:
           background-color: 223 18 11
           primary-color: 207 50 53
