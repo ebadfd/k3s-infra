@@ -31,6 +31,11 @@ spec:
     config:
       mountPath: /app/config/
       data:
+        branding:
+          custom-footer: |
+            <p>ebadfd explorations</p>
+          logo-url: https://ebadfd.tech/static/logo-main.svg
+          favicon-url: https://ebadfd.tech/static/favicon/favicon.ico
         theme:
           background-color: 223 18 11
           primary-color: 207 50 53
