@@ -109,7 +109,7 @@ spec:
                       icon: si:kubernetes
                     - title: Traefik
                       url: https://traefik.svc.misaki.ebadfd.tech/
-                      check-url: http://traefik.traefik.svc.cluster.local:8080
+                      check-url: http://traefik.traefik.svc.cluster.local
                       allow-insecure: true
                       icon: si:traefikproxy
                     - title: Proxmox
