@@ -6,8 +6,6 @@ metadata:
   annotations: 
     kubernetes.io/ingress.class: traefik-external
 spec:
-  entryPoints:
-    - websecure
   routes:
     - match: Host(`homepage.ebadfd.tech`)
       kind: Rule
