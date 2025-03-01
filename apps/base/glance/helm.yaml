@@ -109,9 +109,11 @@ spec:
                       icon: si:kubernetes
                     - title: Traefik
                       url: https://traefik.svc.misaki.ebadfd.tech/
-                      check-url: http://traefik.traefik.svc.cluster.local/ping
+                      check-url: http://traefik.traefik.svc.cluster.local/
                       allow-insecure: true
                       icon: si:traefikproxy
+                      alt-status-codes:
+                        - 404
                     - title: Proxmox
                       url: https://10.20.23.16:8006
                       allow-insecure: true
