@@ -91,21 +91,30 @@ spec:
                   sites:
                     - title: DSM
                       url: https://hikari.dsm.lk-central.dc.ebadfd.tech:5001
+                      check-url: http://10.20.23.30:5000
+                      allow-insecure: true
                       icon: si:synology
                     - title: PI-Hole
                       url: https://dns.lk-central.dc.ebadfd.tech
+                      check-url: https://10.20.23.31
+                      allow-insecure: true
                       icon: si:pi-hole
                     - title: Tenshi
                       url: https://tenshi.fw.lk-central.dc.ebadfd.tech:5001/login
                       icon: si:fortinet
                     - title: Longhorn
                       url: https://longhorn.svc.misaki.ebadfd.tech
+                      check-url: http://longhorn-frontend.longhorn-system.svc.cluster.local
+                      allow-insecure: true
                       icon: si:kubernetes
                     - title: Traefik
                       url: https://traefik.svc.misaki.ebadfd.tech/
+                      check-url: http://traefik.traefik.svc.cluster.local
+                      allow-insecure: true
                       icon: si:traefikproxy
                     - title: Proxmox
                       url: https://kaede.ve.lk-central.dc.ebadfd.tech:8006
+                      allow-insecure: true
                       icon: si:proxmox
 
                 - type: rss
