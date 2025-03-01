@@ -42,7 +42,7 @@ spec:
           negative-color: 38 36 92
           contrast-multiplier: 1.2
         pages:
-        - name: ebadfd
+        - name: ebadfd | Homepage
           width: slim
           hide-desktop-navigation: true
           center-vertically: true
