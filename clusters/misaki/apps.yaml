@@ -86,3 +86,20 @@ spec:
       name: sops-key
   prune: true
 ---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: glance
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: apps
+  interval: 5m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: "./clusters/misaki/glance"
+  prune: true
+  wait: true
+  timeout: 5m0s
+---
