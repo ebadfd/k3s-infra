@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - ../base/nginx
   - ../base/synapse
+  - ../base/glance
 patches:
   - path: nginx-values.yaml
     target:

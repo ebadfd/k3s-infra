@@ -1,0 +1,92 @@
+config:
+  mountPath: /app/config/
+  data:
+    theme:
+      background-color: 223 18 11
+      primary-color: 207 50 53
+      negative-color: 38 36 92
+      contrast-multiplier: 1.2
+    pages:
+    - name: ebadfd
+      width: slim
+      hide-desktop-navigation: true
+      center-vertically: true
+      columns:
+        - size: full
+          widgets:
+            - type: search
+              search-engine: duckduckgo
+              autofocus: true
+              bangs:
+                - title: YouTube
+                  shortcut: "!yt"
+                  url: https://www.youtube.com/results?search_query={QUERY}
+            - type: group
+              widgets:
+                - type: hacker-news
+                - type: lobsters
+
+            - type: videos
+              channels:
+                - UCsBjURrPoezykLs9EqgamOA # Fireship
+                - UCUyeluBRhGPCW4rPe_UvBZQ # ThePrimeTime
+                - UC7YOGHUfC1Tb6E4pudI9STA # Mental Outlaw
+                - UCHnyfMqiRRG1u-2MsSQLbXA # Veritasium
+
+            - type: group
+              widgets:
+                - type: reddit
+                  subreddit: selfhosted
+                  show-thumbnails: true
+                - type: reddit
+                  subreddit: technology
+                  show-thumbnails: true
+                - type: reddit
+                  subreddit: unixporn
+                  show-thumbnails: true
+
+        - size: small
+          widgets:
+            - type: weather
+              location: Colombo, Sri Lanka
+              units: metric # alternatively "imperial"
+              hour-format: 12h # alternatively "24h"
+              # Optionally hide the location from being displayed in the widget
+              hide-location: true
+
+            - type: monitor
+              cache: 30m
+              title: Services
+              allow-insecure: true
+              sites:
+                - title: DSM
+                  url: https://hikari.dsm.lk-central.dc.ebadfd.tech:5001
+                  icon: si:synology
+                - title: PI-Hole
+                  url: https://dns.lk-central.dc.ebadfd.tech
+                  icon: si:pi-hole
+                - title: Tenshi
+                  url: https://tenshi.fw.lk-central.dc.ebadfd.tech:5001/login
+                  icon: si:fortinet
+                - title: Longhorn
+                  url: https://longhorn.svc.misaki.ebadfd.tech
+                  icon: si:kubernetes
+                - title: Traefik
+                  url: https://traefik.svc.misaki.ebadfd.tech/
+                  icon: si:traefikproxy
+                - title: Proxmox
+                  url: https://kaede.ve.lk-central.dc.ebadfd.tech:8006
+                  icon: si:proxmox
+
+            - type: rss
+              limit: 10
+              collapse-after: 3
+              cache: 12h
+              feeds:
+                - url: https://selfh.st/rss/
+                  title: selfh.st
+                  limit: 4
+                - url: https://feeds.twit.tv/sn.xml
+                - url: https://www.joshwcomeau.com/rss.xml
+                  title: Josh Comeau
+                - url: https://samwho.dev/rss.xml
