@@ -1,0 +1,123 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: metube
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: metube
+  namespace: metube
+spec:
+  interval: 1m0s
+  url: https://helm.ebadfd.tech
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: metube
+  namespace: metube
+spec:
+  chart:
+    spec:
+      chart: metube
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: metube
+      version: v0.1.0
+  values:
+    image:
+      repository: ghcr.io/alexta69/metube
+      pullPolicy: IfNotPresent
+      tag: "latest"
+
+    replicaCount: 1
+
+    service:
+      type: ClusterIP
+      port: 8081
+
+    ingress:
+      enabled: false
+
+    persistence:
+      downloads:
+        enabled: true
+        storageClass: longhorn
+        accessMode: ReadWriteOnce
+        size: 50Gi
+        mountPath: /downloads
+      state:
+        enabled: true
+        storageClass: longhorn
+        accessMode: ReadWriteOnce
+        size: 1Gi
+        mountPath: /downloads/.metube
+      temp:
+        enabled: true
+        storageClass: longhorn
+        accessMode: ReadWriteOnce
+        size: 10Gi
+        mountPath: /downloads/temp
+
+    config:
+      uid: 1000
+      gid: 1000
+      umask: "022"
+      defaultTheme: "auto"
+      downloadDir: "/downloads"
+      audioDownloadDir: "/downloads"
+      downloadDirsIndexable: false
+      customDirs: true
+      createCustomDirs: true
+      customDirsExcludeRegex: "(^|/)[.@].*$"
+      stateDir: "/downloads/.metube"
+      tempDir: "/downloads"
+      deleteFileOnTrashcan: false
+      urlPrefix: "/"
+      publicHostUrl: ""
+      publicHostAudioUrl: ""
+      https: false
+      outputTemplate: "%(title)s.%(ext)s"
+      outputTemplateChapter: "%(title)s - %(section_number)s %(section_title)s.%(ext)s"
+      outputTemplatePlaylist: "%(playlist_title)s/%(title)s.%(ext)s"
+      defaultOptionPlaylistStrictMode: false
+      defaultOptionPlaylistItemLimit: 0
+      ytdlOptions: "{}"
+      robotsTxt: ""
+      downloadMode: "limited"
+      maxConcurrentDownloads: 3
+      logLevel: "INFO"
+      enableAccessLog: false
+
+    resources:
+      limits:
+        cpu: 1000m
+        memory: 2Gi
+      requests:
+        cpu: 100m
+        memory: 256Mi
+
+    livenessProbe:
+      httpGet:
+        path: /
+        port: http
+      initialDelaySeconds: 30
+      periodSeconds: 10
+
+    readinessProbe:
+      httpGet:
+        path: /
+        port: http
+      initialDelaySeconds: 5
+      periodSeconds: 5
+
+    autoscaling:
+      enabled: false
+      minReplicas: 1
+      maxReplicas: 3
+      targetCPUUtilizationPercentage: 80
+
+  interval: 1m0s

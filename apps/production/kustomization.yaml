@@ -4,6 +4,7 @@ resources:
   - ../base/nginx
   - ../base/synapse
   - ../base/glance
+  - ../base/metube
 patches:
   - path: nginx-values.yaml
     target:
