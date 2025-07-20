@@ -7,11 +7,9 @@ metadata:
     kubernetes.io/ingress.class: traefik-external
 spec:
   routes:
-    - match: Host(`metube.svc.misaki.ebadfd.tech`)
+    - match: Host(`ytube.ebadfd.tech`)
       kind: Rule
       services:
         - name: metube
           kind: Service
           port: 8081
-  tls:
-    secretName: svc-misaki-ebadfd-tech-tls
