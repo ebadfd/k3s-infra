@@ -12,6 +12,6 @@ spec:
       services:
         - name: metube
           kind: Service
-          port: 8080
+          port: 8081
   tls:
     secretName: svc-misaki-ebadfd-tech-tls
