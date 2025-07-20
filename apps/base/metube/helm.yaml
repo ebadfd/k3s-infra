@@ -47,7 +47,7 @@ spec:
         enabled: true
         storageClass: longhorn
         accessMode: ReadWriteOnce
-        size: 5Gi
+        size: 10Gi
         mountPath: /downloads
       state:
         enabled: true
