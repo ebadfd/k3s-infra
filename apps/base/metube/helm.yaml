@@ -26,7 +26,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: metube
-      version: v0.1.2
+      version: v0.1.3
   values:
     image:
       repository: ghcr.io/alexta69/metube
@@ -66,6 +66,13 @@ spec:
       uid: 1000
       gid: 1000
       umask: "022"
+      dns:
+        enabled: true
+        policy: "None"
+        nameservers:
+          - "8.8.8.8"
+        options:
+          - name: "single-request-reopen"
       defaultTheme: "auto"
       downloadDir: "/downloads"
       audioDownloadDir: "/downloads"
