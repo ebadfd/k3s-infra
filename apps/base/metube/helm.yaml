@@ -85,10 +85,7 @@ spec:
       outputTemplatePlaylist: "%(playlist_title)s/%(title)s.%(ext)s"
       defaultOptionPlaylistStrictMode: false
       defaultOptionPlaylistItemLimit: 0
-      ytdlOptions: |
-        {
-          "force_ipv4": true
-        }
+      ytdlOptions: '{"force_ipv4": true}'
       robotsTxt: ""
       downloadMode: "limited"
       maxConcurrentDownloads: 3
