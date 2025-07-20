@@ -3,7 +3,7 @@ kind: IngressRoute
 metadata:
   name: metube
   namespace: metube
-  annotations:
+  annotations: 
     kubernetes.io/ingress.class: traefik-external
 spec:
   routes:
@@ -12,4 +12,6 @@ spec:
       services:
         - name: metube
           kind: Service
-          port: 8081
+          port: 8080
+  tls:
+    secretName: svc-misaki-ebadfd-tech-tls
