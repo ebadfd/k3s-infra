@@ -37,7 +37,7 @@ spec:
 
     service:
       type: ClusterIP
-      port: 8080
+      port: 8081
 
     ingress:
       enabled: false
@@ -84,8 +84,8 @@ spec:
       tempDir: "/downloads"
       deleteFileOnTrashcan: false
       urlPrefix: "/"
-      publicHostUrl: ""
-      publicHostAudioUrl: ""
+      publicHostUrl: "/downloads/"
+      publicHostAudioUrl: "/downloads/"
       https: false
       outputTemplate: "%(title)s.%(ext)s"
       outputTemplateChapter: "%(title)s - %(section_number)s %(section_title)s.%(ext)s"
@@ -110,42 +110,51 @@ spec:
       downloadsPath: "/downloads"
       downloadsUrl: "/downloads"
       proxyDomain: "ytube.ebadfd.tech"
+
+      security:
+        allowExecutables: false
+        maxFileSize: "500M"
+
       nginxConfig: |
         server {
             listen 8080;
-            server_name app;
-            
-            # Security headers
+            server_name PROXY_DOMAIN_PLACEHOLDER;
+
+            client_max_body_size MAX_FILE_SIZE_PLACEHOLDER;
+
             add_header X-Frame-Options "SAMEORIGIN" always;
             add_header X-Content-Type-Options "nosniff" always;
             add_header X-XSS-Protection "1; mode=block" always;
             add_header Referrer-Policy "strict-origin-when-cross-origin" always;
-            
-            # Serve downloads directory with proper configuration
+
+            # Serve downloads directory
             location /downloads/ {
-                alias /downloads/;
+                alias DOWNLOADS_PATH_PLACEHOLDER/;
                 autoindex on;
                 autoindex_exact_size off;
                 autoindex_localtime on;
                 add_header Content-Disposition "inline";
                 
-                # Security for downloads
+                # Security for downloads - block executables if not allowed
+                EXECUTABLE_BLOCKING_PLACEHOLDER
+
+                # Media file handling
                 location ~* \.(mp4|webm|mkv|avi|mov|wmv|flv|m4v|3gp|ogv|ts|mts|m2ts)$ {
                     add_header Content-Type "video/mp4";
                     add_header Accept-Ranges "bytes";
                 }
-                
+
                 location ~* \.(mp3|wav|flac|aac|ogg|m4a|wma)$ {
                     add_header Content-Type "audio/mpeg";
                     add_header Accept-Ranges "bytes";
                 }
-                
+
                 # Prevent access to hidden files
                 location ~ /\. {
                     deny all;
                 }
             }
-            
+
             # Proxy everything else to the main application
             location / {
                 proxy_pass http://localhost:8081;
@@ -161,10 +170,17 @@ spec:
                 proxy_set_header Upgrade $http_upgrade;
                 proxy_set_header Connection "upgrade";
                 
-                # Timeouts
+                # Timeout settings
                 proxy_connect_timeout 60s;
                 proxy_send_timeout 60s;
                 proxy_read_timeout 60s;
+            }
+
+            # Health check endpoint
+            location /health {
+                access_log off;
+                return 200 "healthy\n";
+                add_header Content-Type text/plain;
             }
         }
 
